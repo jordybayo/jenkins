@@ -13,9 +13,18 @@ pipeline {
         SERVER_CREDENTIALS = credentials('jordy')
     }
     stages {
+        stage('init'){
+            steps{
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
         stage('build') {
             steps {
-                echo 'building'
+                script{
+                    gv.buildApp()
+                }
                 echo "building version ${NEW_VERSION}"
             }
         }
@@ -30,14 +39,24 @@ pipeline {
                     params.executeTests
                 }
             }
-            steps {
-                echo "testing"
+            steps{
+                script {
+                    gv.testApp()
+                }
             }
         }
         stage('deploy') {
-            steps {
-                    echo "deployment"
+            input{
+                message "select the env to deploy to"
+                ok "Done"
+                choice(name: 'ENV', choices: ['dev', 'staging', 'prod'], description: '')
+            }
+            steps{
+                script {
+                    gv.deployApp()
                     echo "deploying version ${params.VERSION}"
+                    echo "deploying to ${ENV}"
+                }
             }
         }
     }
