@@ -5,9 +5,9 @@ pipeline {
         booleanParam(name: 'executeTests', defaultValue: true, description:'')
     }
     // for accessing build tools
-    tools{
-       maven 'Maven'
-    }
+    // tools{
+    //    maven 'Maven'
+    // }
     environment{
         NEW_VERSION = '1.3.0'
         SERVER_CREDENTIALS = credentials('jordy')
@@ -60,15 +60,15 @@ pipeline {
             }
         }
     }
-    post{
-        always{
-            //
-        }
-        success{
-            //
-        }
-        failure{
-            //
-        }
-    }
+    // post{
+    //     always{
+    //         //
+    //     }
+    //     success{
+    //         //
+    //     }
+    //     failure{
+    //         //
+    //     }
+    // }
 }
