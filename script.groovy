@@ -9,6 +9,8 @@ def testApp(){
 
 def deployApp(){
     echo 'Deploying the application...'
+     echo "deploying to ${ONE}"
+    echo "deploying to ${TWO}"
 }
 
 
