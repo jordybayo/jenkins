@@ -52,9 +52,9 @@ pipeline {
                 
                     gv.deployApp()
                     // echo "deploying version ${params.VERSION}"  
-                    echo "deploying to ${ONE}"
-                    echo "deploying to ${TWO}"
                 }
+                echo "deploying to ${ONE}"
+                echo "deploying to ${TWO}"
             }
         }
     }
