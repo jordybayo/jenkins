@@ -52,7 +52,7 @@ pipeline {
                 
                     gv.deployApp()
                     // echo "deploying version ${params.VERSION}"  
-                }
+                }+
             }
         }
     }
