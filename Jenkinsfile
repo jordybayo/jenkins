@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    parameters{
+    parameters {
         choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
         booleanParam(name: 'executeTests', defaultValue: true, description:'')
     }
@@ -8,10 +8,10 @@ pipeline {
     // tools{
     //    maven 'Maven'
     // }
-    environment{
-        NEW_VERSION = '1.3.0'
-        SERVER_CREDENTIALS = credentials('jordy')
-    }
+    // environment{
+    //     NEW_VERSION = '1.3.0'
+    //     SERVER_CREDENTIALS = credentials('jordy')
+    // }
     stages {
         stage('init'){
             steps{
@@ -25,7 +25,7 @@ pipeline {
                 script{
                     gv.buildApp()
                 }
-                echo "building version ${NEW_VERSION}"
+                // echo "building version ${NEW_VERSION}"
             }
         }
         stage('test') {
@@ -54,7 +54,7 @@ pipeline {
                         parameters choice(name: 'ENV', choices: ['dev', 'staging', 'prod'], description: '')
                     }
                     gv.deployApp()
-                    echo "deploying version ${params.VERSION}"
+                    // echo "deploying version ${params.VERSION}"
                     echo "deploying to ${ENV}"
                 }
             }
