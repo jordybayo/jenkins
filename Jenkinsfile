@@ -8,10 +8,10 @@ pipeline {
     // tools{
     //    maven 'Maven'
     // }
-    // environment{
-    //     NEW_VERSION = '1.3.0'
-    //     SERVER_CREDENTIALS = credentials('jordy')
-    // }
+    environment{
+        NEW_VERSION = '1.3.0'
+        SERVER_CREDENTIALS = credentials('jordy')
+    }
     stages {
         stage('init'){
             steps{
